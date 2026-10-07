@@ -89,21 +89,21 @@ def buscar_aluno_curso(conexao, curso):
 ########Testes#########
 conexao = conectar()
 print('Conectado ao banco')
-#inserir_aluno(conexao, 'Juca Pereira', 'INFORMATICA')
-#inserir_aluno(conexao, 'Marcelo', 'INFORMATICA')
-#inserir_aluno(conexao, 'Pedro', 'INFORMATICA')
-#inserir_aluno(conexao, 'Ana', 'INFORMATICA')
-#inserir_aluno(conexao, 'Enrico', 'INFORMATICA')
-#inserir_aluno(conexao, 'Joao', 'INFORMATICA')
-#inserir_aluno(conexao, 'Maria Eduarda', 'INFORMATICA')
-#inserir_aluno(conexao, 'Bernardo', 'INFORMATICA')
-#inserir_aluno(conexao, 'Miguel', 'INFORMATICA')
-#inserir_aluno(conexao, 'Sofia', 'ELETRONICA')
-#inserir_aluno(conexao, 'Simon', 'MULTIMIDIA')
+inserir_aluno(conexao, 'Juca Pereira', 'Informatica')
+inserir_aluno(conexao, 'Marcelo', 'Informatica')
+inserir_aluno(conexao, 'Pedro', 'Informatica')
+inserir_aluno(conexao, 'Ana', 'Informatica')
+inserir_aluno(conexao, 'Enrico', 'Informatica')
+inserir_aluno(conexao, 'Joao', 'Informatica')
+inserir_aluno(conexao, 'Maria Eduarda', 'Informatica')
+inserir_aluno(conexao, 'Bernardo', 'Informatica')
+inserir_aluno(conexao, 'Miguel', 'Informatica')
+inserir_aluno(conexao, 'Sofia', 'Eletronica')
+inserir_aluno(conexao, 'Simon', 'Multimidia')
 #apagar_aluno(conexao, 6)
 #editar_aluno(conexao, 'Juca Pereira', 'Analise de sistemas', 7)
 
-lista = buscar_aluno_curso(conexao, 'INFORMATICA')
+lista = buscar_aluno_curso(conexao, 'Informatica')
 
 if lista:
     for x in lista:
