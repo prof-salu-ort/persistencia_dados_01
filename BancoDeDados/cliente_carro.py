@@ -57,13 +57,13 @@ def inserir_cliente_carro(conexao, nome, placa):
             print(f'Cliente cadastrado com sucesso!')
     except Error as e:
         print(f'Error: {e}')
-        cursor.rollback()
+        conexao.rollback()
 
 
 ########Testes#########
 conexao = conectar()
 print('Conectado ao banco')
 
-inserir_cliente_carro(conexao, 'jose', 'yyyy123fdsd')
+inserir_cliente_carro(conexao, 'jose', 'YYY1234')
 
 conexao.close()
