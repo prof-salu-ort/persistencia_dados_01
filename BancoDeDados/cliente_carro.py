@@ -42,13 +42,28 @@ def inserir_carro(conexao, placa, id_cliente):
     except Error as e:
         print(f'Error: {e}')
 
+def inserir_cliente_carro(conexao, nome, placa):
+    sql1 = 'INSERT INTO cliente (nome) VALUES (%s) RETURNING id'
+    sql2 = 'INSERT INTO carro (placa, id_cliente) VALUES (%s, %s)'
+    try:
+        with conexao.cursor() as cursor:
+            cursor.execute(sql1, (nome, ))
+            
+            #Ultimo id criado
+            ultimo_id = cursor.fetchone()[0]
+            cursor.execute(sql2, (placa, ultimo_id))
+            conexao.commit()
+
+            print(f'Cliente cadastrado com sucesso!')
+    except Error as e:
+        print(f'Error: {e}')
+        cursor.rollback()
 
 
 ########Testes#########
 conexao = conectar()
 print('Conectado ao banco')
 
-id_do_cliente = inserir_cliente(conexao, 'Ana')
-inserir_carro(conexao, 'xyz9876', id_do_cliente)
+inserir_cliente_carro(conexao, 'jose', 'yyyy123fdsd')
 
 conexao.close()
