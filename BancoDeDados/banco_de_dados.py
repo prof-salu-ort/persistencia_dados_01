@@ -19,12 +19,16 @@ def conectar():
         return None
 
 def inserir_aluno(conexao, nome, curso):
-    sql = 'INSERT INTO alunos (nome, curso) VALUES (%s, %s)'
+    sql = 'INSERT INTO alunos (nome, curso) VALUES (%s, %s) RETURNING matricula'
     try:
         with conexao.cursor() as cursor:
             cursor.execute(sql, (nome, curso))
             conexao.commit()
             print(f'Aluno cadastrado com sucesso!')
+            
+            #Ultima matricula criada
+            ultima_matricula = cursor.fetchone()[0]            
+            print(ultima_matricula)
     except Error as e:
         print(f'Error: {e}')
 
@@ -99,16 +103,10 @@ print('Conectado ao banco')
 #inserir_aluno(conexao, 'Bernardo', 'Informatica')
 #inserir_aluno(conexao, 'Miguel', 'Informatica')
 #inserir_aluno(conexao, 'Sofia', 'Eletronica')
-#inserir_aluno(conexao, 'Simon', 'Multimidia')
+inserir_aluno(conexao, 'TESTE', 'TESTE')
 #apagar_aluno(conexao, 6)
 #editar_aluno(conexao, 'Juca Pereira', 'Analise de sistemas', 7)
 
-lista = buscar_aluno_curso(conexao, 'Informatica')
 
-if lista:
-    for x in lista:
-        print(f'Matricula: {x[0]:03d} | Nome: {x[1]} | Curso: {x[2]}')
-else:
-    print('Nenhum aluno encontrado')
 
 conexao.close()

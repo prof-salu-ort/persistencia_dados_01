@@ -21,6 +21,10 @@ try:
 
     #Cursor
     cursor = conexao.cursor()
+    ultima_matricula = cursor.fetchone()[0]
+
+    #Ultima matricula criada
+    print(ultima_matricula)
 
     #executando o comando
     cursor.execute(sql, valores)
