@@ -26,11 +26,11 @@ def inserir_cliente(conexao, nome):
             conexao.commit()
             print(f'Cliente cadastrado com sucesso!')
             
-            #Ultimo id criado
-            ultimo_id = cursor.fetchone()[0]            
+            ultimo_id = cursor.fetchone()[0]
             return ultimo_id
     except Error as e:
         print(f'Error: {e}')
+        
 
 def inserir_carro(conexao, placa, id_cliente):
     sql = 'INSERT INTO carro (placa, id_cliente) VALUES (%s, %s)'
@@ -58,7 +58,6 @@ def inserir_cliente_carro(conexao, nome, placa):
     except Error as e:
         print(f'Error: {e}')
         conexao.rollback()
-
 
 ########Testes#########
 conexao = conectar()
